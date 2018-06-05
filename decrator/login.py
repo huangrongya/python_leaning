@@ -16,6 +16,7 @@ def check_login(status):
         def inner():
             if status is True:
                 print("you have already login")
+                func()
             else:
                 data = open("user_info", "r", encoding='utf8')
                 dic = {}
@@ -23,22 +24,41 @@ def check_login(status):
                     print(i.strip())
                     line = i.strip()
                     dic[line.split(":")[0].strip()] = line.split(":")[1].strip()
-                choose = input("please choose your way to login: 1.password 2.wechat")
-                if choose == 1:
+                choose = input("please choose your way to login (1.password 2.token) :")
+                if choose == '1':
                     username = input("please enter your username: ")
                     password = input("please enter your password: ")
-                    if dic['username'] == username and dic['password'] == password:
+                    if dic['user_name'] == username and dic['password'] == password:
                         print('welcome! %s' % username)
-                        status = True
+                        # status = True
+                        func()
                     else:
                         print('login failed!')
                         return
-                elif choose == 2:
+                elif choose == '2':
                     token = input('please enter your token: ')
                     if dic['token'] == token:
-                        status = True
+                        # status = True
                         print('login success!!!')
+                        func()
+                    else:
+                        print('login failed!!!')
         return inner
+
     return login
 
 
+status = True
+
+
+@check_login(status)
+def home():
+    print("welcome to home page!")
+
+
+@check_login(status)
+def book():
+    print("welcome to books area")
+
+
+home()
