@@ -9,3 +9,10 @@
 # date : 2018/6/6 0006 10:41
 # @Project : python_leaning
 # @FileName: demo_1.py
+
+li = [1, 2, 3, 4, 5]
+d = iter(li)
+print(d)
+print(next(d))
+
+print(isinstance(d, list))

@@ -14,6 +14,7 @@
 def check_login(status):
     def login(func):
         def inner():
+            global status
             if status is True:
                 print("you have already login")
                 func()
@@ -30,15 +31,14 @@ def check_login(status):
                     password = input("please enter your password: ")
                     if dic['user_name'] == username and dic['password'] == password:
                         print('welcome! %s' % username)
-                        # status = True
+                        status = True
                         func()
                     else:
                         print('login failed!')
-                        return
                 elif choose == '2':
                     token = input('please enter your token: ')
                     if dic['token'] == token:
-                        # status = True
+                        status = True
                         print('login success!!!')
                         func()
                     else:
@@ -48,17 +48,23 @@ def check_login(status):
     return login
 
 
-status = True
+status = False
 
 
-@check_login(status)
+@check_login()
 def home():
     print("welcome to home page!")
 
 
-@check_login(status)
+@check_login()
 def book():
     print("welcome to books area")
 
+
+home()
+
+print(status)
+
+book()
 
 home()

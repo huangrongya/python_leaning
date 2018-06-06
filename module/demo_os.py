@@ -9,3 +9,11 @@
 # date : 2018/6/6 0006 17:32
 # @Project : python_leaning
 # @FileName: demo_os.py
+
+import os
+
+print(os.getcwd())
+d = os.getcwd()
+# os.makedirs('abc/def')
+# os.removedirs('abc/def')
+print(os.listdir(d))
