@@ -9,3 +9,9 @@
 # date : 2018/6/7 0007 10:06
 # @Project : python_leaning
 # @FileName: demo_sys.py
+
+import sys
+
+print(sys.argv)
+print(sys.path)
+print(sys.platform)

@@ -9,3 +9,14 @@
 # date : 2018/6/7 0007 10:51
 # @Project : python_leaning
 # @FileName: demo_hashlib.py
+
+import hashlib
+
+s = '123456'
+
+m = hashlib.md5()
+
+print(m)
+
+
+
